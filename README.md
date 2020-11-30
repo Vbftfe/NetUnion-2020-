@@ -1,19 +1,17 @@
-# sign_up
+#### NetUnion 2020招新题目前端方向1——报名网站制作
 
-## Project setup
-```
-npm install
-```
+#### 网站架构
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### 网站架构
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* 前端采用vue+element搭建页面
+* 后端采用node.js+koa搭建本地服务
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##### 功能实现
+
+1. **NetUnion介绍**：先将招新pdf内容转为markdown，再将markdown转为html并在报名网站上展示
+2. **报名信息填写**：基于element构建一个表单，表单要填写的信息包括姓名、学号、邮箱、报名方向并且使用了element的表单验证功能
+3. **附件上传**：使用element的文件上传组件
+4. **邮件发送**：在服务端使用emailjs发送邮件
+5. **报名信息查询**：将除附件外的报名信息使用localStorage存储，再学号输入框的右侧有一个查询按钮，当学号输入完成并验证正确后查询按钮方可正确使用，点击查询按钮会在localStorage中按照输入的学号查询报名信息，若信息存在，则提示查询成功自动完成表单填写，否则提示查询失败。（信息提示使用element提供的$emssage方法实现）
+6. **网站执行过程**： 用户在网页端填写完成表单信息（可以选择上传附件）后点击提交按钮，网页端将用户填写的信息和附件（如果有的话）通过post请求发送给本地服务端，服务端接收到数据后使用koa-body将二进制流数据正确解析并在本地存储，再使用emailjs将报名信息和附件发送到指定的邮箱
